@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-producer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-producer
+  template:
+    metadata:
+      labels:
+        app: log-producer
+    spec:
+      containers:
+      - name: producer
+        image: your-dockerhub/producer:latest
+        ports:
+        - containerPort: 9092

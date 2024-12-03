@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-consumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-consumer
+  template:
+    metadata:
+      labels:
+        app: log-consumer
+    spec:
+      containers:
+      - name: consumer
+        image: your-dockerhub/consumer:latest
+        ports:
+        - containerPort: 9092
